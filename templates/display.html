@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block title %}
+    <a href="{% url 'emp_profile:home' %}" class="btn btn-info text-white">
+        Home
+    </a>
+{% endblock %}
+{% block content %}
+
+    <table class="table table-striped table-bordered table-hover">
+
+        <thead>
+        <tr>
+            <th>S.no</th>
+            <th>  Name</th>
+            <th bgcolor="green" class="text-white">Date of Birth</th>
+            <th>Date of Joining</th>
+            <th bgcolor="red" class="text-white">Date of Retirement</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip Code</th>
+            <th>Email</th>
+            <th>Marital Status</th>
+            <th>Salutation</th>
+            <th>Highest Qualification</th>
+        </tr>
+        </thead>
+        {% for employee in employees %}
+
+            <tr>
+                <td>
+                    {{ forloop.counter }}
+                </td>
+
+                <td>
+                    {{ employee.first_name }}  {{ employee.last_name }}
+                </td>
+
+
+
+                <td bgcolor="green" class="text-white">
+                    {{ employee.date_of_birth }}
+                </td>
+
+                <td>
+                    {{ employee.date_of_joining }}
+                </td>
+
+                <td bgcolor="red" class="text-white">
+                    {{ retirements_of_employees }}
+                </td>
+
+                <td>
+                    {{ employee.address }}
+                </td>
+
+                <td>
+                    {{ employee.city }}
+                </td>
+
+                <td>
+                    {{ employee.state }}
+                </td>
+
+                <td>
+                    {{ employee.zip_code }}
+                </td>
+                <td>
+                    {{ employee.email }}
+                </td>
+                <td>
+                    {{ employee.marital_status }}
+                </td>
+                <td>
+                    {{ employee.salutation }}
+                </td>
+                <td>
+                    {{ employee.highest_qualification }}
+                </td>
+
+            </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}

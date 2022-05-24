@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <a href="{% url 'emp_profile:display' %}" class="btn btn-info text-white">
+        View Data
+    </a>
+{% endblock %}
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <form method="post">
+                <legend class="mb-5 text-center">Employee Details</legend>
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-md-6 mb-0">
+                        {{ form.first_name|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6 mb-0">
+                        {{ form.last_name|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6 mb-0">
+                        {{ form.date_of_birth|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6 mb-0">
+                        {{ form.date_of_joining|as_crispy_field }}
+                    </div>
+
+                    {#                    <div class="form-group col-md-4 mb-0">#}
+                    {#                        {{ form.date_of_retirement|as_crispy_field }}#}
+                    {#                    </div>#}
+
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12 mb-0">
+                        {{ form.address|as_crispy_field }}
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.city|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.state|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.zip_code|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.email|as_crispy_field }}
+                    </div>
+                </div>
+
+                {{ form.marital_status|as_crispy_field }}
+
+                <div class="form-row">
+
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.salutation|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-3 mb-0">
+                        {{ form.highest_qualification|as_crispy_field }}
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-3 mb-0">
+                        <input type="submit" class="btn btn-primary" value="Save">
+                        <input type="reset" class="btn btn-danger" value="Reset">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
